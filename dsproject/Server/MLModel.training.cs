@@ -37,9 +37,7 @@ namespace Dsproject_Server
             // Data process configuration with pipeline data transformations
             var pipeline = mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"Sex", @"Sex"),new InputOutputColumnPair(@"Age", @"Age"),new InputOutputColumnPair(@"SibSp", @"SibSp"),new InputOutputColumnPair(@"Parch", @"Parch"),new InputOutputColumnPair(@"Fare", @"Fare"),new InputOutputColumnPair(@"Pclass_1", @"Pclass_1"),new InputOutputColumnPair(@"Pclass_2", @"Pclass_2"),new InputOutputColumnPair(@"Pclass_3", @"Pclass_3"),new InputOutputColumnPair(@"Embarked_C", @"Embarked_C"),new InputOutputColumnPair(@"Embarked_Q", @"Embarked_Q"),new InputOutputColumnPair(@"Embarked_S", @"Embarked_S")})      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"Sex",@"Age",@"SibSp",@"Parch",@"Fare",@"Pclass_1",@"Pclass_2",@"Pclass_3",@"Embarked_C",@"Embarked_Q",@"Embarked_S"}))      
-                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName:@"Survived",inputColumnName:@"Survived"))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator:mlContext.BinaryClassification.Trainers.FastTree(new FastTreeBinaryTrainer.Options(){NumberOfLeaves=3121,MinimumExampleCountPerLeaf=124,NumberOfTrees=50,MaximumBinCountPerFeature=129,FeatureFraction=0.99999999,LearningRate=0.999999776672986,LabelColumnName=@"Survived",FeatureColumnName=@"Features"}),labelColumnName: @"Survived"))      
-                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName:@"PredictedLabel",inputColumnName:@"PredictedLabel"));
+                                    .Append(mlContext.BinaryClassification.Trainers.FastTree(new FastTreeBinaryTrainer.Options(){NumberOfLeaves=10,MinimumExampleCountPerLeaf=12,NumberOfTrees=9,MaximumBinCountPerFeature=1022,FeatureFraction=0.96463870119798,LearningRate=0.999999776672986,LabelColumnName=@"Survived",FeatureColumnName=@"Features"}));
 
             return pipeline;
         }

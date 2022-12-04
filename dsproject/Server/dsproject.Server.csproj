@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.Extensions.ML" Version="1.5.5" />
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.LightGbm" Version="1.7.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\dsproject.Client.csproj" />

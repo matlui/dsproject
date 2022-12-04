@@ -16,7 +16,7 @@ namespace Dsproject_Server
         public class ModelInput
         {
             [ColumnName(@"Survived")]
-            public float Survived { get; set; }
+            public bool Survived { get; set; }
 
             [ColumnName(@"Sex")]
             public float Sex { get; set; }
@@ -62,7 +62,7 @@ namespace Dsproject_Server
         public class ModelOutput
         {
             [ColumnName(@"Survived")]
-            public uint Survived { get; set; }
+            public bool Survived { get; set; }
 
             [ColumnName(@"Sex")]
             public float Sex { get; set; }
@@ -101,10 +101,13 @@ namespace Dsproject_Server
             public float[] Features { get; set; }
 
             [ColumnName(@"PredictedLabel")]
-            public float PredictedLabel { get; set; }
+            public bool PredictedLabel { get; set; }
 
             [ColumnName(@"Score")]
-            public float[] Score { get; set; }
+            public float Score { get; set; }
+
+            [ColumnName(@"Probability")]
+            public float Probability { get; set; }
 
         }
 

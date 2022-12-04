@@ -12,7 +12,7 @@
       {
         "ColumnName": "Survived",
         "ColumnPurpose": "Label",
-        "ColumnDataFormat": "Single",
+        "ColumnDataFormat": "Boolean",
         "IsCategorical": true,
         "Type": "Column",
         "Version": 2
@@ -118,37 +118,37 @@
       {
         "Version": 0,
         "Type": "Trial",
-        "TrainerName": "FastTreeOva",
-        "Score": 0.839202657807309,
-        "RuntimeInSeconds": 0.278
+        "TrainerName": "FastTreeBinary",
+        "Score": 0.85897435897435892,
+        "RuntimeInSeconds": 0.09
       },
       {
         "Version": 0,
         "Type": "Trial",
-        "TrainerName": "FastTreeOva",
-        "Score": 0.81328903654485052,
-        "RuntimeInSeconds": 0.128
+        "TrainerName": "FastTreeBinary",
+        "Score": 0.85897435897435892,
+        "RuntimeInSeconds": 0.099
       },
       {
         "Version": 0,
         "Type": "Trial",
-        "TrainerName": "FastTreeOva",
-        "Score": 0.80797342192691035,
-        "RuntimeInSeconds": 0.162
+        "TrainerName": "FastTreeBinary",
+        "Score": 0.85897435897435892,
+        "RuntimeInSeconds": 0.094
       },
       {
         "Version": 0,
         "Type": "Trial",
-        "TrainerName": "FastTreeOva",
-        "Score": 0.80531561461794021,
-        "RuntimeInSeconds": 0.176
+        "TrainerName": "FastTreeBinary",
+        "Score": 0.85897435897435892,
+        "RuntimeInSeconds": 0.124
       },
       {
         "Version": 0,
         "Type": "Trial",
-        "TrainerName": "LbfgsMaximumEntropyMulti",
-        "Score": 0.80431893687707645,
-        "RuntimeInSeconds": 0.018
+        "TrainerName": "LightGbmBinary",
+        "Score": 0.84615384615384615,
+        "RuntimeInSeconds": 0.021
       }
     ],
     "Pipeline": {
@@ -198,33 +198,23 @@
           "OutputColumnName": "Features"
         },
         "2": {
-          "OutputColumnName": "Survived",
-          "InputColumnName": "Survived"
-        },
-        "3": {
-          "NumberOfLeaves": 3121,
-          "MinimumExampleCountPerLeaf": 124,
-          "NumberOfTrees": 50,
-          "MaximumBinCountPerFeature": 129,
-          "FeatureFraction": 0.99999999,
+          "NumberOfLeaves": 10,
+          "MinimumExampleCountPerLeaf": 12,
+          "NumberOfTrees": 9,
+          "MaximumBinCountPerFeature": 1022,
+          "FeatureFraction": 0.9646387011979799,
           "LearningRate": 0.99999977667298645,
           "LabelColumnName": "Survived",
           "FeatureColumnName": "Features"
-        },
-        "4": {
-          "OutputColumnName": "PredictedLabel",
-          "InputColumnName": "PredictedLabel"
         }
       },
       "estimators": [
         "ReplaceMissingValues",
         "Concatenate",
-        "MapValueToKey",
-        "FastTreeOva",
-        "MapKeyToValue"
+        "FastTreeBinary"
       ]
     },
-    "MetricName": "MacroAccuracy"
+    "MetricName": "Accuracy"
   },
   "Type": "TrainingConfig",
   "Version": 2
