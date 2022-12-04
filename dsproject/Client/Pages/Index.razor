@@ -70,7 +70,7 @@
         var resp = await HttpClient.PostAsJsonAsync<InputModel>("api/prediction", input);
         var prediction = await resp.Content.ReadFromJsonAsync<OutputModel>();
 
-        result = $"Survive: {prediction.Survive}%, Dead: {prediction.NotSurvive}%";
+        result = $"Probability of Survival: {prediction.Survive}%";
     }
 
 }

@@ -34,11 +34,11 @@ namespace dsproject.Server.Controllers
             predictionInput.Pclass_3 = input.PassengerClass == "class3" ? 1 : 0;
             predictionInput.Sex = input.Sex == "male" ? 1 : 0;
 
-            var score = _predictionEnginePool.Predict(predictionInput).Score;
+            var r = _predictionEnginePool.Predict(predictionInput);
+            var score = _predictionEnginePool.Predict(predictionInput).Probability;
 
             OutputModel output = new OutputModel() {
-                NotSurvive = Math.Round(score[0] * 100),
-                Survive = Math.Round(score[1] * 100)
+                Survive = Math.Round(score * 100)
             };
 
             return await Task.FromResult(output);
