@@ -1,0 +1,76 @@
+﻿@page "/"
+@using dsproject.Shared
+@inject HttpClient HttpClient
+
+<PageTitle>Index</PageTitle>
+
+<h1>Prediction</h1>
+
+<div>
+    Sex:
+    <select @bind="input.Sex">
+        <option>Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+</div>
+<div>
+    Age:
+    <input type="text" @bind-value="input.Age"/>
+</div>
+<div>
+    Siblings/Spouses:
+    <input type="text" @bind-value="input.Sibsp"/>
+</div>
+<div>
+    Parents/Children:
+    <input type="text" @bind-value="input.Parch" />
+</div>
+<div>
+    Fare:
+    <input type="text" @bind-value="input.Fare" />
+</div>
+<div>
+    Passenger Class:
+    <select @bind="input.PassengerClass">
+        <option>Select</option>
+        <option value="class1">1</option>
+        <option value="class2">2</option>
+        <option value="class3">3</option>
+    </select>
+</div>
+<div>
+    Port of Embarkment:
+    <select @bind="input.Embark">
+        <option>Select</option>
+        <option value="c">Cherbourg</option>
+        <option value="q">Queenstown</option>
+        <option value="s">Southampton</option>
+    </select>
+</div>
+
+<input type="button" @onclick="Predict" value="Predict"/>
+
+<div>
+    Prediction: <span style="font-weight:bold;">@result</span>
+</div>
+
+@code {
+
+    string result = string.Empty;
+    InputModel input = new InputModel();
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    private async Task Predict()
+    {
+        var resp = await HttpClient.PostAsJsonAsync<InputModel>("api/prediction", input);
+        var prediction = await resp.Content.ReadFromJsonAsync<OutputModel>();
+
+        result = $"Survive: {prediction.Survive}%, Dead: {prediction.NotSurvive}%";
+    }
+
+}
