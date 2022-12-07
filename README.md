@@ -11,4 +11,4 @@ Notable files in the Server folder:
 - clean.csv is the data file used. It is the train.csv file found on Kaggle https://www.kaggle.com/competitions/titanic/data?select=train.csv and cleaned.
 - MLModel.training.cs is a ML.NET implementation of the training pipeline
 - AutoML_results.txt is the result of the automated training. You can see in 60 seconds it tried 687 models and determined the best one.
-
+- Details of the best performing algorithm: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.fasttree.fasttreebinarytrainer?view=ml-dotnet#training-algorithm-details
